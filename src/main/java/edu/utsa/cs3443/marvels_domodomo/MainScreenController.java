@@ -3,12 +3,13 @@ package edu.utsa.cs3443.marvels_domodomo;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class MainScreenController {
-    @FXML
-    private Label welcomeText;
+/**
+ * @author Giovanni De Leon
+ * TO-DO CONTROLLER.
+ * Handles the
+ * 
+ * */
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+public class MainScreenController {
+
 }

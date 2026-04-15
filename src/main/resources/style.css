@@ -1,38 +1,37 @@
-/* --- REGULAR TABS (Hoverable & Clickable) --- */
-.pixel-button {
-    -fx-background-image: url("../../../images/BGDomo/Options(Un-Pressed).PNG");
+.button.pixel-button {
     -fx-background-color: transparent;
-    -fx-background-slice: 10;
-    -fx-background-size: stretch;
+    -fx-background-image: url("../../../images/BGDomo/Edit(Un-Pressed).png");
+    -fx-background-size: contain;      /* ← change this */
     -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+
+    -fx-border-width: 0;
+    -fx-padding: 0;
+    -fx-text-fill: transparent;
+    -fx-font-size: 0;
 }
 
-.pixel-button:hover {
-    -fx-cursor: hand;
-    /* This creates the highlight you wanted */
-    -fx-effect: innershadow(three-pass-box, white, 20, 0, 0, 0);
-}
-
-.pixel-button:pressed {
-    -fx-background-image: url("../../../images/BGDomo/Options(Pressed).PNG");
-    -fx-translate-y: 2px;
-}
-
-/* --- THE ACTIVE TAB (Already Pressed) --- */
 .pixel-button-active {
-    /* Use the PRESSED image as the default */
-    -fx-background-image: url("../../../images/BGDomo/Options(Pressed).PNG");
     -fx-background-color: transparent;
-    -fx-background-slice: 10;
-    -fx-background-size: stretch;
-    -fx-background-repeat: no-repeat;
-
-    /* Move it down 2px permanently to align with the 'pressed' look */
-    -fx-translate-y: 2px;
+    -fx-background-image: url("../../../images/BGDomo/Edit(Un-Pressed).png");
+    -fx-background-size: contain;      /* ← change this too */
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-padding: 0;
+    -fx-text-fill: transparent;
 }
 
-/* Ensure the active tab doesn't glow or move more when hovering */
-.pixel-button-active:hover {
-    -fx-cursor: default;
-    -fx-effect: null;
+.button.pixel-button:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.5), 10, 0, 0, 0);
+    -fx-cursor: hand;
+}
+
+.button.pixel-button:pressed {
+    -fx-background-image: url("../../../images/BGDomo/Edit(Un-Pressed).png");
+    -fx-translate-y: 2px;
 }
