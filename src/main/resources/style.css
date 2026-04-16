@@ -1,6 +1,6 @@
 /* --- REGULAR TABS (Hoverable & Clickable) --- */
 .pixel-button {
-    -fx-background-image: url("../../../images/BGDomo/Options(Un-Pressed).PNG");
+    -fx-background-image: url("../../../images/BGDomo/Edit(Un-Pressed).PNG");
     -fx-background-color: transparent;
     -fx-background-slice: 10;
     -fx-background-size: stretch;
@@ -14,14 +14,14 @@
 }
 
 .pixel-button:pressed {
-    -fx-background-image: url("../../../images/BGDomo/Options(Pressed).PNG");
+    -fx-background-image: url("../../../images/BGDomo/Edit(Pressed).PNG");
     -fx-translate-y: 2px;
 }
 
 /* --- THE ACTIVE TAB (Already Pressed) --- */
 .pixel-button-active {
     /* Use the PRESSED image as the default */
-    -fx-background-image: url("../../../images/BGDomo/Options(Pressed).PNG");
+    -fx-background-image: url("../../../images/BGDomo/Edit(Pressed).PNG");
     -fx-background-color: transparent;
     -fx-background-slice: 10;
     -fx-background-size: stretch;
