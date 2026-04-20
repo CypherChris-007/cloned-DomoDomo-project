@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.marvels_domodomo.MainScreenController">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1280.0">
+      <ImageView fitHeight="731.0" fitWidth="1280.0">
          <image>
             <Image url="@../../../../images/BGDomo/BaseBackGround.PNG" />
          </image>
@@ -17,58 +17,25 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <Button alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="26.0" layoutY="47.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="Options" textAlignment="CENTER">
+      <Button fx:id="optionsButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="26.0" layoutY="47.0" mnemonicParsing="false" onAction="#onOptionsClick" prefHeight="100.0" prefWidth="240.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Options" textAlignment="CENTER">
          <font>
             <Font name="Oswald Medium" size="31.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="91.0" fitWidth="233.0">
-               <image>
-                  <Image url="@../../../../images/BGDomo/Edit(Un-Pressed).PNG" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="332.0" layoutY="46.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="To-Do" textAlignment="CENTER">
+      <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="332.0" layoutY="46.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="100.0" prefWidth="240.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
          <font>
             <Font name="Oswald Medium" size="31.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="91.0" fitWidth="233.0">
-               <image>
-                  <Image url="@../../../../images/BGDomo/Edit(Un-Pressed).PNG" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="647.0" layoutY="49.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="Edit" textAlignment="CENTER">
+      <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="647.0" layoutY="49.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="100.0" prefWidth="240.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
          <font>
             <Font name="Oswald Medium" size="31.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="91.0" fitWidth="233.0">
-               <image>
-                  <Image url="@../../../../images/BGDomo/Edit(Un-Pressed).PNG" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="959.0" layoutY="50.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="Pet" textAlignment="CENTER">
+      <Button fx:id="petButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="959.0" layoutY="50.0" mnemonicParsing="false" onAction="#onPetClick" prefHeight="100.0" prefWidth="240.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Pet" textAlignment="CENTER">
          <font>
             <Font name="Oswald Medium" size="31.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="91.0" fitWidth="233.0">
-               <image>
-                  <Image url="@../../../../images/BGDomo/Edit(Un-Pressed).PNG" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
-      <ImageView fitHeight="705.0" fitWidth="930.0" layoutX="35.0" layoutY="25.0">
-         <image>
-            <Image url="@../../../../images/BGDomo/OptionsScreen(Pressed).PNG" />
-         </image>
-      </ImageView>
    </children>
 </Pane>
