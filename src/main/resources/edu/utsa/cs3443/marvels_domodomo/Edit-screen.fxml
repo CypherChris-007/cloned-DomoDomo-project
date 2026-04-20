@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<AnchorPane
+        prefHeight="600" prefWidth="800"
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="edu.utsa.cs3443.marvels_domodomo.EditController"
+        stylesheets="@/style.css">
+    <!-- Background Image -->
+    <ImageView
+            fx:id="backgroundImage"
+            preserveRatio="false"
+            AnchorPane.topAnchor="0"
+            AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0"
+            AnchorPane.rightAnchor="0">
+        <image>
+            <Image url="@../../../../images/BGDomo/BaseBackGround.PNG" />
+        </image>
+    </ImageView>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.utsa.cs3443.marvels_domodomo.EditController"
-            prefHeight="400.0" prefWidth="600.0">
+    <!-- Top Tab Buttons -->
+    <Button fx:id="OptionsID" text="Options"
+            styleClass="pixel-button"
+            layoutX="50" layoutY="20"
+            prefWidth="150" prefHeight="50"
+            onAction="#onOptionsClick"/>
+
+    <Button fx:id="ToDoID" text="To-Do"
+            styleClass="pixel-button"
+            layoutX="220" layoutY="20"
+            prefWidth="150" prefHeight="50"
+            onAction="#onToDoClick"/>
+
+    <Button fx:id="EditID" text="Edit"
+            styleClass="pixel-button-active"
+            layoutX="390" layoutY="20"
+            prefWidth="150" prefHeight="50"
+            onAction="#onEditClick"/>
+
+    <Button fx:id="PetID" text="Pet"
+            styleClass="pixel-button"
+            layoutX="560" layoutY="20"
+            prefWidth="150" prefHeight="50"
+            onAction="#onPetClick"/>
+
+    <!-- Text Area -->
+    <TextArea fx:id="textArea"
+              promptText="TYPE HERE..."
+              layoutX="400" layoutY="150"
+              prefWidth="300" prefHeight="300"
+              AnchorPane.rightAnchor="50"/>
+
+    <!-- Add / Edit / Remove Buttons -->
+    <Button fx:id="addID" text="Add"
+            styleClass="pixel-button"
+            layoutX="100" layoutY="200"
+            prefWidth="150" prefHeight="50"
+            onAction="#onAddClick"/>
+
+    <Button fx:id="editID" text="Edit"
+            styleClass="pixel-button"
+            layoutX="100" layoutY="270"
+            prefWidth="150" prefHeight="50"
+            onAction="#onEditClick2"/>
+
+    <Button fx:id="removeID" text="Remove"
+            styleClass="pixel-button"
+            layoutX="100" layoutY="340"
+            prefWidth="150" prefHeight="50"
+            onAction="#onRemoveClick"/>
 
 </AnchorPane>

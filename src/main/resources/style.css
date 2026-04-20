@@ -1,38 +1,47 @@
-/* --- REGULAR TABS (Hoverable & Clickable) --- */
-.pixel-button {
-    -fx-background-image: url("../../../images/BGDomo/Edit(Un-Pressed).PNG");
-    -fx-background-color: transparent;
-    -fx-background-slice: 10;
-    -fx-background-size: stretch;
+.root {
+    /* Replace 'background.png' with your actual filename */
+    -fx-background-image: url("images/BGDomo/background.png");
+    -fx-background-size: cover; /* This makes it fill the window */
+    -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
-
-.pixel-button:hover {
-    -fx-cursor: hand;
-    /* This creates the highlight you wanted */
-    -fx-effect: innershadow(three-pass-box, white, 20, 0, 0, 0);
-}
-
-.pixel-button:pressed {
-    -fx-background-image: url("../../../images/BGDomo/Edit(Pressed).PNG");
-    -fx-translate-y: 2px;
-}
-
-/* --- THE ACTIVE TAB (Already Pressed) --- */
-.pixel-button-active {
-    /* Use the PRESSED image as the default */
-    -fx-background-image: url("../../../images/BGDomo/Edit(Pressed).PNG");
+.button.pixel-button {
     -fx-background-color: transparent;
-    -fx-background-slice: 10;
-    -fx-background-size: stretch;
+    -fx-background-image: url("images/BGDomo/Edit(Un-Pressed).png");
+    -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
 
-    /* Move it down 2px permanently to align with the 'pressed' look */
-    -fx-translate-y: 2px;
-}
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
 
-/* Ensure the active tab doesn't glow or move more when hovering */
-.pixel-button-active:hover {
-    -fx-cursor: default;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+    -fx-text-fill: Black;        /* ← changed from transparent */
+    -fx-font-size: 14px;         /* ← changed from 0 */
     -fx-effect: null;
+}
+
+.pixel-button-active {
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/BGDomo/Edit(Pressed).png"); /* ← fixed to Pressed */
+    -fx-background-size: contain;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-padding: 0;
+    -fx-text-fill: Black;        /* ← changed from transparent */
+    -fx-font-size: 14px;         /* ← changed from 0 */
+    -fx-translate-y: 2px;  /* ← permanently pushed down */
+}
+
+.button.pixel-button:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.5), 10, 0, 0, 0); /* ← drop shadow on hover */
+    -fx-cursor: hand;
+}
+
+.button.pixel-button:pressed {
+    -fx-background-image: url("images/BGDomo/Edit(Pressed).png");
+    -fx-translate-y: 2px;
 }

@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0">
          <image>
-            <Image url="@images/BGDomo/BaseBackGround.PNG" />
+            <Image url="@../../../../images/BGDomo/BaseBackGround.PNG" />
          </image>
          <viewport>
             <Rectangle2D />
@@ -24,7 +24,7 @@
          <graphic>
             <ImageView fitHeight="91.0" fitWidth="233.0">
                <image>
-                  <Image url="@images/BGDomo/Edit(Un-Pressed).PNG" />
+                  <Image url="@../../../../images/BGDomo/Edit(Un-Pressed).PNG" />
                </image>
             </ImageView>
          </graphic>
@@ -36,7 +36,7 @@
          <graphic>
             <ImageView fitHeight="91.0" fitWidth="233.0">
                <image>
-                  <Image url="@images/BGDomo/Edit(Un-Pressed).PNG" />
+                  <Image url="@../../../../images/BGDomo/Edit(Un-Pressed).PNG" />
                </image>
             </ImageView>
          </graphic>
@@ -48,7 +48,7 @@
          <graphic>
             <ImageView fitHeight="91.0" fitWidth="233.0">
                <image>
-                  <Image url="@images/BGDomo/Edit(Un-Pressed).PNG" />
+                  <Image url="@../../../../images/BGDomo/Edit(Un-Pressed).PNG" />
                </image>
             </ImageView>
          </graphic>
@@ -60,14 +60,14 @@
          <graphic>
             <ImageView fitHeight="91.0" fitWidth="233.0">
                <image>
-                  <Image url="@images/BGDomo/Edit(Un-Pressed).PNG" />
+                  <Image url="@../../../../images/BGDomo/Edit(Un-Pressed).PNG" />
                </image>
             </ImageView>
          </graphic>
       </Button>
       <ImageView fitHeight="705.0" fitWidth="930.0" layoutX="35.0" layoutY="25.0">
          <image>
-            <Image url="@images/BGDomo/OptionsScreen(Pressed).PNG" />
+            <Image url="@../../../../images/BGDomo/OptionsScreen(Pressed).PNG" />
          </image>
       </ImageView>
    </children>
