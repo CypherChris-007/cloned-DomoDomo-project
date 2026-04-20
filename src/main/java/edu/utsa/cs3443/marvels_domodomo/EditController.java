@@ -47,7 +47,7 @@ public class EditController {
 
     @FXML
     protected void onToDoClick() throws Exception {
-        switchScene("ToDo-screen.fxml");
+        switchScene("Main-screen.fxml");
     }
 
     @FXML

@@ -65,9 +65,9 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="705.0" fitWidth="930.0" layoutX="35.0" layoutY="25.0">
+      <ImageView fitHeight="468.0" fitWidth="876.0" layoutX="86.0" layoutY="187.0">
          <image>
-            <Image url="@../../../../images/BGDomo/OptionsScreen(Pressed).PNG" />
+            <Image url="@../../../../images/BGDomo/ToDoScreenCanvas.PNG" />
          </image>
       </ImageView>
    </children>
