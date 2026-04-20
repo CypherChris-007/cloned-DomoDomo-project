@@ -22,7 +22,7 @@
             <Font name="Oswald Medium" size="31.0" />
          </font>
       </Button>
-      <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="332.0" layoutY="46.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="103.0" prefWidth="250.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
+      <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="329.0" layoutY="51.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="97.0" prefWidth="254.0" styleClass="pixel-button-active" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
          <font>
             <Font name="Oswald Medium" size="31.0" />
          </font>

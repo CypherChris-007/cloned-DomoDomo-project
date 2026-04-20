@@ -23,8 +23,8 @@ public class DomoDomoApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(
                 DomoDomoApplication.class.getResource("Edit-screen.fxml")
         );
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600); // ← change from 320, 240
-        stage.setTitle("Marvels DomoDomo");
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setTitle("DomoDomo!");
         stage.setScene(scene);
         stage.show();
     }
