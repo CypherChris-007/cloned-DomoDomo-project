@@ -1,78 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
 
-<AnchorPane
-        prefHeight="600" prefWidth="800"
-        xmlns="http://javafx.com/javafx"
-        xmlns:fx="http://javafx.com/fxml"
-        fx:controller="edu.utsa.cs3443.marvels_domodomo.EditController"
-        stylesheets="@/style.css">
+<AnchorPane prefHeight="600" prefWidth="800" stylesheets="@/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.marvels_domodomo.EditController">
     <!-- Background Image -->
-    <ImageView
-            fx:id="backgroundImage"
-            preserveRatio="false"
-            AnchorPane.topAnchor="0"
-            AnchorPane.bottomAnchor="0"
-            AnchorPane.leftAnchor="0"
-            AnchorPane.rightAnchor="0">
+    <ImageView fx:id="backgroundImage" preserveRatio="false" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <image>
             <Image url="@../../../../images/BGDomo/BaseBackGround.PNG" />
         </image>
     </ImageView>
 
     <!-- Top Tab Buttons -->
-    <Button fx:id="OptionsID" text="Options"
-            styleClass="pixel-button"
-            layoutX="50" layoutY="20"
-            prefWidth="150" prefHeight="50"
-            onAction="#onOptionsClick"/>
+    <Button fx:id="OptionsID" layoutX="50" layoutY="20" onAction="#onOptionsClick" prefHeight="50" prefWidth="150" styleClass="pixel-button" text="Options" />
 
-    <Button fx:id="ToDoID" text="To-Do"
-            styleClass="pixel-button"
-            layoutX="220" layoutY="20"
-            prefWidth="150" prefHeight="50"
-            onAction="#onToDoClick"/>
+    <Button fx:id="ToDoID" layoutX="220" layoutY="20" onAction="#onToDoClick" prefHeight="50" prefWidth="150" styleClass="pixel-button" text="To-Do" />
 
-    <Button fx:id="EditID" text="Edit"
-            styleClass="pixel-button-active"
-            layoutX="390" layoutY="20"
-            prefWidth="150" prefHeight="50"
-            onAction="#onEditClick"/>
+    <Button fx:id="EditID" layoutX="390" layoutY="20" onAction="#onEditClick" prefHeight="50" prefWidth="150" styleClass="pixel-button-active" text="Edit" />
 
-    <Button fx:id="PetID" text="Pet"
-            styleClass="pixel-button"
-            layoutX="560" layoutY="20"
-            prefWidth="150" prefHeight="50"
-            onAction="#onPetClick"/>
+    <Button fx:id="PetID" layoutX="560" layoutY="20" onAction="#onPetClick" prefHeight="50" prefWidth="150" styleClass="pixel-button" text="Pet" />
 
     <!-- Text Area -->
-    <TextArea fx:id="textArea"
-              promptText="TYPE HERE..."
-              layoutX="400" layoutY="150"
-              prefWidth="300" prefHeight="300"
-              AnchorPane.rightAnchor="50"/>
+    <TextArea fx:id="textArea" layoutX="400" layoutY="150" prefHeight="300" prefWidth="300" promptText="TYPE HERE..." AnchorPane.rightAnchor="50" />
 
     <!-- Add / Edit / Remove Buttons -->
-    <Button fx:id="addID" text="Add"
-            styleClass="pixel-button"
-            layoutX="100" layoutY="200"
-            prefWidth="150" prefHeight="50"
-            onAction="#onAddClick"/>
+    <Button fx:id="addID" layoutX="100" layoutY="200" onAction="#onAddClick" prefHeight="50" prefWidth="150" styleClass="pixel-button" text="Add" />
 
-    <Button fx:id="editID" text="Edit"
-            styleClass="pixel-button"
-            layoutX="100" layoutY="270"
-            prefWidth="150" prefHeight="50"
-            onAction="#onEditClick2"/>
+    <Button fx:id="editID" layoutX="100" layoutY="270" onAction="#onEditClick2" prefHeight="50" prefWidth="150" styleClass="pixel-button" text="Edit" />
 
-    <Button fx:id="removeID" text="Remove"
-            styleClass="pixel-button"
-            layoutX="100" layoutY="340"
-            prefWidth="150" prefHeight="50"
-            onAction="#onRemoveClick"/>
+    <Button fx:id="removeID" layoutX="100" layoutY="340" onAction="#onRemoveClick" prefHeight="50" prefWidth="150" styleClass="pixel-button" text="Remove" />
 
 </AnchorPane>
