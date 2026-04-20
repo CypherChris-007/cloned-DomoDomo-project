@@ -19,6 +19,9 @@
             AnchorPane.bottomAnchor="0"
             AnchorPane.leftAnchor="0"
             AnchorPane.rightAnchor="0">
+        <image>
+            <Image url="@../../../../images/BGDomo/BaseBackGround.PNG" />
+        </image>
     </ImageView>
 
     <!-- Top Tab Buttons -->

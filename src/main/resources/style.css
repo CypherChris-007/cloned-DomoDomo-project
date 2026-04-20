@@ -1,3 +1,10 @@
+.root {
+    /* Replace 'background.png' with your actual filename */
+    -fx-background-image: url("images/BGDomo/background.png");
+    -fx-background-size: cover; /* This makes it fill the window */
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
 .button.pixel-button {
     -fx-background-color: transparent;
     -fx-background-image: url("images/BGDomo/Edit(Un-Pressed).png");
