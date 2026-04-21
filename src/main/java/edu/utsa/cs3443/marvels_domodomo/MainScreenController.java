@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -34,6 +35,7 @@ public class MainScreenController {
     private CheckBox taskTwo;
     @FXML
     private CheckBox taskThree;
+
     TaskManager taskManager;
 
     public void initialize() {
@@ -80,13 +82,20 @@ public class MainScreenController {
     }
 
     @FXML
-    protected void onBoxOneClick(ActionEvent pEvent){
+    protected void onBoxClick(ActionEvent pEvent) throws IOException{
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
         if(taskOne.isSelected()){
             Task task = tasks.get(0);
-            taskManager.removeTask(task);
+            TaskManager.getInstance().removeTask(task);
+        } else if (taskTwo.isSelected()) {
+            Task task = tasks.get(1);
+            TaskManager.getInstance().removeTask(task);
+        }else if(taskThree.isSelected()){
+            Task task = tasks.get(2);
+            TaskManager.getInstance().removeTask(task);
         }
     }
+
 
     private void switchScene(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(
