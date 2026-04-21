@@ -87,6 +87,7 @@ public class TaskManager {
      * Each line format: taskName,points,true/false
      * Skips blank lines and malformed lines silently.
      */
+    // Ask in meeting: Are we deleting data or just removing from the list. - Gio
     public void loadTasks() {
         tasks.clear();
         File file = new File(FILE_PATH);

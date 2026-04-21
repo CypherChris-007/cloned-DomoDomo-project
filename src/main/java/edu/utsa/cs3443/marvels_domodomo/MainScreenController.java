@@ -1,5 +1,6 @@
 package edu.utsa.cs3443.marvels_domodomo;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -78,6 +79,15 @@ public class MainScreenController {
         }
     }
 
+    @FXML
+    protected void onBoxOneClick(ActionEvent pEvent){
+        ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
+        if(taskOne.isSelected()){
+            Task task = tasks.get(0);
+            taskManager.removeTask(task);
+        }
+    }
+
     private void switchScene(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(fxml)
@@ -86,5 +96,7 @@ public class MainScreenController {
         Stage stage = (Stage) editButton.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+
+
     }
 }

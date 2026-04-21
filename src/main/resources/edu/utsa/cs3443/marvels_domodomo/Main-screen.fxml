@@ -38,7 +38,7 @@
             <Font name="Oswald Medium" size="31.0" />
          </font>
       </Button>
-      <CheckBox fx:id="taskOne" layoutX="221.0" layoutY="242.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="763.0">
+      <CheckBox fx:id="taskOne" layoutX="221.0" layoutY="242.0" mnemonicParsing="false" onAction="#onBoxOneClick" prefHeight="77.0" prefWidth="763.0">
          <font>
             <Font name="Oswald Regular" size="47.0" />
          </font>
@@ -61,6 +61,11 @@
       <ImageView layoutX="943.0" layoutY="303.0">
          <image>
             <Image url="@../../../../images/BGDomo/PetHearts.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="270.0" fitWidth="288.0" layoutX="897.0" layoutY="312.0">
+         <image>
+            <Image url="@../../../../images/BGDomo/catt.png" />
          </image>
       </ImageView>
       <ImageView layoutX="1097.0" layoutY="311.0">
