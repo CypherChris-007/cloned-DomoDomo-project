@@ -98,9 +98,7 @@ public class MainScreenController {
 
 
     private void switchScene(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(fxml)
-        );
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) editButton.getScene().getWindow();
         stage.setScene(scene);

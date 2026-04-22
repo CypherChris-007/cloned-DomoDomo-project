@@ -17,6 +17,7 @@ public class DomoDomoApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("DomoDomo!");
         stage.setScene(scene);
+        stage.setMaximized(true);   // ← fills any laptop screen (hopefully)
         stage.show();
     }
 
