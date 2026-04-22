@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,13 +37,29 @@ public class MainScreenController {
     private CheckBox taskTwo;
     @FXML
     private CheckBox taskThree;
+    @FXML
+    private ImageView heartOne;
+    @FXML
+    private ImageView heartTwo;
+    @FXML
+    private ImageView heartThree;
+    private Image emptyHeart;
+    // At the top of your class
+    private Image fullHeart;
+
+
 
     TaskManager taskManager;
 
+    private int points=0;
+
     public void initialize() {
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
+        emptyHeart = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts_Empty.PNG"));
+        fullHeart  = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts.PNG"));
         System.out.println("Loaded tasks: " + tasks.size()); // check this in console
         taskDisplay();
+        heartManager();
     }
 
     // TOP TAB BUTTONS
@@ -66,6 +84,29 @@ public class MainScreenController {
     }
 
     // TO-DO METHODS
+    protected void heartManager() {
+        Image emptyHeart = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts_Empty.PNG"));
+        Image fullHeart  = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts.PNG"));
+
+
+        if (points >= 3) {
+            heartOne.setImage(fullHeart);
+            heartTwo.setImage(fullHeart);
+            heartThree.setImage(fullHeart);
+        } else if (points == 2) {
+            heartOne.setImage(fullHeart);
+            heartTwo.setImage(fullHeart);
+            heartThree.setImage(emptyHeart);
+        } else if (points == 1) {
+            heartOne.setImage(fullHeart);
+            heartTwo.setImage(emptyHeart);
+            heartThree.setImage(emptyHeart);
+        } else if (points <= 0) {
+            heartOne.setImage(emptyHeart);
+            heartTwo.setImage(emptyHeart);
+            heartThree.setImage(emptyHeart);
+        }
+    }
     protected void taskDisplay() {
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
         CheckBox[] boxes = {taskOne, taskTwo, taskThree};
@@ -82,18 +123,25 @@ public class MainScreenController {
     }
 
     @FXML
-    protected void onBoxClick(ActionEvent pEvent) throws IOException{
+    protected int onBoxClick(ActionEvent pEvent) throws IOException{
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
         if(taskOne.isSelected()){
             Task task = tasks.get(0);
             TaskManager.getInstance().removeTask(task);
+            return task.getPoints();
+
         } else if (taskTwo.isSelected()) {
             Task task = tasks.get(1);
             TaskManager.getInstance().removeTask(task);
+            return task.getPoints();
+
         }else if(taskThree.isSelected()){
             Task task = tasks.get(2);
             TaskManager.getInstance().removeTask(task);
+            return task.getPoints();
+
         }
+        return 0;
     }
 
     @FXML
