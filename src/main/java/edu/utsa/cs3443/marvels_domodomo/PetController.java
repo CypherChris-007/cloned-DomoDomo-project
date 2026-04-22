@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 public class PetController {
 
-    @FXML private Label motivationLabel;
+//    @FXML private Label motivationLabel;
 
     // Nav buttons — wire these in Pet-screen.fxml the same way other screens do
     @FXML private Button optionsButton;
@@ -28,27 +28,27 @@ public class PetController {
      * Called automatically by JavaFX after the FXML is loaded.
      * Calculates completion % and sets the motivational message.
      */
-    @FXML
-    public void initialize() {
-        double completionPct = TaskManager.getInstance().getCompletionPercent();
-        double remaining = 100.0 - completionPct;
-
-        String message;
-
-        if (TaskManager.getInstance().getTasks().isEmpty()) {
-            message = "No tasks yet — add some in the Edit tab!";
-        } else if (completionPct == 100.0) {
-            message = "You did it! All goals complete today! 🎉";
-        } else {
-            // Matches the Figma format which goes likee "You are 77.3% away from achieving all your goals today — don't give up!"
-            message = String.format(
-                    "You are %.1f%% away from achieving all your goals today — don't give up!",
-                    remaining
-            );
-        }
-
-        motivationLabel.setText(message);
-    }
+//    @FXML
+//    public void initialize() {
+//        double completionPct = TaskManager.getInstance().getCompletionPercent();
+//        double remaining = 100.0 - completionPct;
+//
+//        String message;
+//
+//        if (TaskManager.getInstance().getTasks().isEmpty()) {
+//            message = "No tasks yet — add some in the Edit tab!";
+//        } else if (completionPct == 100.0) {
+//            message = "You did it! All goals complete today! 🎉";
+//        } else {
+//            // Matches the Figma format which goes likee "You are 77.3% away from achieving all your goals today — don't give up!"
+//            message = String.format(
+//                    "You are %.1f%% away from achieving all your goals today — don't give up!",
+//                    remaining
+//            );
+//        }
+//
+//        motivationLabel.setText(message);
+//    }
 
     // ── Tab Navigation ────────────────────────────────────────────
     @FXML
@@ -78,4 +78,6 @@ public class PetController {
         stage.setScene(scene);
         stage.show();
     }
+
+
 }
