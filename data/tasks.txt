@@ -1,0 +1,3 @@
+Take out Trash,1,false
+Walk Doge,1,false
+Drink my Dr Pepper,1,false
