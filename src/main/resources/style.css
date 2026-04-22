@@ -20,7 +20,7 @@
     -fx-border-width: 0;
     -fx-padding: 0;
     -fx-text-fill: Black;        /* ← changed from transparent */
-    -fx-font-size: 14px;         /* ← changed from 0 */
+    -fx-font-size: 30px;         /* ← changed from 0 */
     -fx-effect: null;
 }
 
@@ -32,7 +32,7 @@
     -fx-min-height: 0;
     -fx-padding: 0;
     -fx-text-fill: Black;        /* ← changed from transparent */
-    -fx-font-size: 14px;         /* ← changed from 0 */
+    -fx-font-size: 30px;         /* ← changed from 0 */
     -fx-translate-y: 2px;  /* ← permanently pushed down */
 }
 
