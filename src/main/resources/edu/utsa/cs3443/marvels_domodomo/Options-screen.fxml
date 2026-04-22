@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.utsa.cs3443.marvels_domodomo.OptionsController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="600" prefWidth="800" stylesheets="@/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.marvels_domodomo.OptionsController">
+    <children>
+        <!-- Background Image -->
+        <ImageView fx:id="backgroundImage" preserveRatio="false" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+            <image>
+                <Image url="@../../../../images/BGDomo/BaseBackGround.PNG" />
+            </image>
+        </ImageView>
+
+
+        <Button fx:id="optionsButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="50.0" layoutY="20.0" mnemonicParsing="false" onAction="#onOptionsClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Options" textAlignment="CENTER">
+            <font>
+                <Font name="Oswald Medium" size="31.0" />
+            </font>
+        </Button>
+        <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="220.0" layoutY="20.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
+            <font>
+                <Font name="Oswald Medium" size="31.0" />
+            </font>
+        </Button>
+        <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="390.0" layoutY="20.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
+            <font>
+                <Font name="Oswald Medium" size="31.0" />
+            </font>
+        </Button>
+        <Button fx:id="petButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="560.0" layoutY="20.0" mnemonicParsing="false" onAction="#onPetClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Pet" textAlignment="CENTER">
+            <font>
+                <Font name="Oswald Medium" size="31.0" />
+            </font>
+        </Button>
+<!--     <ComboBox fx:id="choiceDropdown"  prefHeight="10" prefWidth="180" promptText="Select Option" AnchorPane.bottomAnchor="-155.0" AnchorPane.rightAnchor="608.0" AnchorPane.topAnchor="400.0" />-->
+
+    </children>
 
 </AnchorPane>
