@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -11,63 +12,65 @@
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0">
          <image>
-            <Image url="@images/BGDomo/BaseBackGround.PNG" />
+            <Image url="@../../../../images/BGDomo/BaseBackGround.PNG" />
          </image>
          <viewport>
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <Button alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="26.0" layoutY="47.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="Options" textAlignment="CENTER">
+      <Button fx:id="optionsButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="26.0" layoutY="47.0" mnemonicParsing="false" onAction="#onOptionsClick" prefHeight="103.0" prefWidth="250.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Options" textAlignment="CENTER">
          <font>
             <Font name="Oswald Medium" size="31.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="91.0" fitWidth="233.0">
-               <image>
-                  <Image url="@images/BGDomo/Edit(Un-Pressed).PNG" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="332.0" layoutY="46.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="To-Do" textAlignment="CENTER">
+      <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="329.0" layoutY="51.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="97.0" prefWidth="254.0" styleClass="pixel-button-active" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
          <font>
             <Font name="Oswald Medium" size="31.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="91.0" fitWidth="233.0">
-               <image>
-                  <Image url="@images/BGDomo/Edit(Un-Pressed).PNG" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="647.0" layoutY="49.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="Edit" textAlignment="CENTER">
+      <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="647.0" layoutY="49.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="103.0" prefWidth="250.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
          <font>
             <Font name="Oswald Medium" size="31.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="91.0" fitWidth="233.0">
-               <image>
-                  <Image url="@images/BGDomo/Edit(Un-Pressed).PNG" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="959.0" layoutY="50.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="Pet" textAlignment="CENTER">
+      <Button fx:id="petButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="959.0" layoutY="50.0" mnemonicParsing="false" onAction="#onPetClick" prefHeight="103.0" prefWidth="250.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Pet" textAlignment="CENTER">
          <font>
             <Font name="Oswald Medium" size="31.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="91.0" fitWidth="233.0">
-               <image>
-                  <Image url="@images/BGDomo/Edit(Un-Pressed).PNG" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
-      <ImageView fitHeight="705.0" fitWidth="930.0" layoutX="35.0" layoutY="25.0">
+      <CheckBox fx:id="taskOne" layoutX="221.0" layoutY="242.0" mnemonicParsing="false" onAction="#onBoxClick" prefHeight="77.0" prefWidth="763.0">
+         <font>
+            <Font name="Oswald Regular" size="47.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="taskTwo" layoutX="219.0" layoutY="370.0" mnemonicParsing="false" onAction="#onBoxClick" prefHeight="77.0" prefWidth="763.0">
+         <font>
+            <Font name="Oswald Regular" size="47.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="taskThree" layoutX="218.0" layoutY="496.0" mnemonicParsing="false" onAction="#onBoxClick" prefHeight="77.0" prefWidth="763.0">
+         <font>
+            <Font name="Oswald Regular" size="47.0" />
+         </font>
+      </CheckBox>
+      <ImageView layoutX="1027.0" layoutY="239.0">
          <image>
-            <Image url="@images/BGDomo/OptionsScreen(Pressed).PNG" />
+            <Image url="@../../../../images/BGDomo/PetHearts.PNG" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="943.0" layoutY="303.0">
+         <image>
+            <Image url="@../../../../images/BGDomo/PetHearts.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="270.0" fitWidth="288.0" layoutX="897.0" layoutY="312.0">
+         <image>
+            <Image url="@../../../../images/BGDomo/catt.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="1097.0" layoutY="311.0">
+         <image>
+            <Image url="@../../../../images/BGDomo/PetHearts.PNG" />
          </image>
       </ImageView>
    </children>

@@ -1,0 +1,2 @@
+Take out trash,1,false
+Slime Nic,3,false

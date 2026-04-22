@@ -4,40 +4,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="414.0" fitWidth="740.0" layoutX="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/BGDomo/BaseBackGround.PNG" />
-         </image>
-      </ImageView>
-      <Button layoutX="31.0" layoutY="32.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="111.0" styleClass="pixel-button" stylesheets="@src/main/resources/style.css" text="Options">
-         <font>
-            <Font name="Verdana Italic" size="12.800000190734863" />
-         </font>
-      </Button>
-      <Button layoutX="187.0" layoutY="32.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="111.0" styleClass="pixel-button" stylesheets="@src/main/resources/style.css" text="To-Do">
-         <font>
-            <Font name="Verdana Italic" size="12.800000190734863" />
-         </font>
-      </Button>
-      <Button layoutX="364.0" layoutY="32.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="111.0" styleClass="pixel-button-active" stylesheets="@src/main/resources/style.css" text="Edit">
-         <font>
-            <Font name="Verdana Italic" size="12.800000190734863" />
-         </font>
-      </Button>
-      <Button layoutX="554.0" layoutY="32.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="111.0" styleClass="pixel-button" stylesheets="@src/main/resources/style.css" text="Pet">
-         <font>
-            <Font name="Verdana Italic" size="12.800000190734863" />
-         </font>
-      </Button>
-      <AnchorPane layoutX="39.0" layoutY="125.0" prefHeight="234.0" prefWidth="634.0">
          <children>
-            <ImageView fitHeight="234.0" fitWidth="567.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/BGDomo/EditSCreen.PNG" />
                </image>
             </ImageView>
          </children>
