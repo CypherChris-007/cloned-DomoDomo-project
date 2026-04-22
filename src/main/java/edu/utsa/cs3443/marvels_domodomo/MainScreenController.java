@@ -96,6 +96,10 @@ public class MainScreenController {
         }
     }
 
+    @FXML
+    protected void petHeartIndicator(){
+
+    }
 
     private void switchScene(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(
