@@ -14,6 +14,12 @@ public class TaskManager {
 
     // ── Singleton ────────────────────────────────────────────────
     private static TaskManager instance;
+    // This is so we can keep track of the points for the To-Do hearts.
+    private int points = 0;
+
+    public int getPoints() { return points; }
+    public void addPoints(int p) { points += p; }
+    public void resetPoints() { points = 0; }
 
     /** Call this everywhere instead of new TaskManager() */
     public static TaskManager getInstance() {

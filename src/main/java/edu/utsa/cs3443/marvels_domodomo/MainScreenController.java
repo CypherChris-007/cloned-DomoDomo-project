@@ -47,17 +47,17 @@ public class MainScreenController {
     // At the top of your class
     private Image fullHeart;
 
-
+    private int points = 0;
 
     TaskManager taskManager;
 
-    private int points=0;
-
     public void initialize() {
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
+        points = TaskManager.getInstance().getPoints();
         emptyHeart = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts_Empty.PNG"));
         fullHeart  = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts.PNG"));
         System.out.println("Loaded tasks: " + tasks.size()); // check this in console
+
         taskDisplay();
         heartManager();
     }
@@ -85,10 +85,6 @@ public class MainScreenController {
 
     // TO-DO METHODS
     protected void heartManager() {
-        Image emptyHeart = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts_Empty.PNG"));
-        Image fullHeart  = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts.PNG"));
-
-
         if (points >= 3) {
             heartOne.setImage(fullHeart);
             heartTwo.setImage(fullHeart);
@@ -123,30 +119,33 @@ public class MainScreenController {
     }
 
     @FXML
-    protected int onBoxClick(ActionEvent pEvent) throws IOException{
+    protected void onBoxClick(ActionEvent pEvent) throws IOException {
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
-        if(taskOne.isSelected()){
+
+        if (taskOne.isSelected()) {
             Task task = tasks.get(0);
+            TaskManager.getInstance().addPoints(task.getPoints());
+            points = TaskManager.getInstance().getPoints();
+            taskOne.setVisible(false);
             TaskManager.getInstance().removeTask(task);
-            return task.getPoints();
+            System.out.println("Points: " + points + "\n");
 
         } else if (taskTwo.isSelected()) {
             Task task = tasks.get(1);
+            TaskManager.getInstance().addPoints(task.getPoints());
+            points = TaskManager.getInstance().getPoints();
+            taskTwo.setVisible(false);
             TaskManager.getInstance().removeTask(task);
-            return task.getPoints();
 
-        }else if(taskThree.isSelected()){
+        } else if (taskThree.isSelected()) {
             Task task = tasks.get(2);
+            TaskManager.getInstance().addPoints(task.getPoints());
+            points = TaskManager.getInstance().getPoints();
+            taskThree.setVisible(false);
             TaskManager.getInstance().removeTask(task);
-            return task.getPoints();
-
         }
-        return 0;
-    }
 
-    @FXML
-    protected void petHeartIndicator(){
-
+        heartManager();
     }
 
     private void switchScene(String fxml) throws Exception {
