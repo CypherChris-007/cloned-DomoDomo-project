@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.*;
 import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.List;//identify index
 
 public class EditController {
 
@@ -24,23 +26,11 @@ public class EditController {
     @FXML private Button editID;
     @FXML private Button removeID;
     @FXML private TextArea textArea;
-    @FXML private ImageView backgroundImage;
-    @FXML private ImageView innerImage;
-
 
     private static final String FILE_PATH = "data/tasks.txt";
 
     @FXML
     public void initialize() {
-
-        // ── Bind inner image to parent StackPane size ──
-        innerImage.sceneProperty().addListener((obs, oldScene, newScene) -> {
-            if (newScene != null) {
-                StackPane parent = (StackPane) innerImage.getParent();
-                innerImage.fitWidthProperty().bind(parent.widthProperty());
-                innerImage.fitHeightProperty().bind(parent.heightProperty());
-            }
-        });
 
         // ── rest of initialize ──
         try {
@@ -57,22 +47,40 @@ public class EditController {
 
 
     // ── File Read ─────────────────────────────────────────────────
-
-    private void loadFromFile() {
-        try {
-            String content = new String(
-                    Files.readAllBytes(Paths.get(FILE_PATH))
-            );
-            if (content.trim().isEmpty()) {
-                textArea.setText("TYPE HERE...");
-            } else {
-                textArea.setText(content);
-            }
-        } catch (Exception e) {
-            textArea.setText("TYPE HERE...");
-            System.out.println("Load failed: " + e.getMessage());
+//
+//    private void loadFromFile() {
+//        try {
+//            String content = new String(
+//                    Files.readAllBytes(Paths.get(FILE_PATH))
+//            );
+//            if (content.trim().isEmpty()) {
+//                textArea.setText("TYPE HERE...");
+//            } else {
+//                textArea.setText(content);
+//            }
+//        } catch (Exception e) {
+//            textArea.setText("TYPE HERE...");
+//            System.out.println("Load failed: " + e.getMessage());
+//        }
+//        textArea.setEditable(false);
+//    }
+private void loadFromFile()
+    {
+        ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
+    if(tasks.isEmpty())
+    {
+        textArea.setText("Type Here . . . ");
+    }
+    else{
+        StringBuilder display = new StringBuilder();
+        for (Task task : tasks) //enhanced for-loop
+        {
+            display.append(task.getTaskName()).append("\n"); // only show task name
         }
+        textArea.setText(display.toString().trim());
+    }
         textArea.setEditable(false);
+
     }
 
     // ── File Write ────────────────────────────────────────────────
@@ -113,49 +121,85 @@ public class EditController {
 
     // ── Add / Edit / Remove ───────────────────────────────────────
 
-    @FXML
-    protected void onAddClick() {
-        if (addID.getText().equals("Add")) {
-            // Unlock and clear for new entry
-            textArea.setEditable(true);
-            textArea.clear();
-            textArea.requestFocus();
-            addID.setText("Save");
-        } else {
-            // Save to file
-            saveToFile();
-            textArea.setEditable(false);
-            addID.setText("Add");
-            showMessage(addID, " Saved!");
-        }
-    }
+@FXML
+protected void onAddClick() {
+    if (addID.getText().equals("Add")) {
+        // Unlock and clear for new entry
+        textArea.setEditable(true);
+        textArea.clear();
+        textArea.requestFocus();
+        addID.setText("Save");
+    } else {
+        // Get what the user typed (just the task name e.g. "Code")
+        String taskName = textArea.getText().trim();
 
-    @FXML
-    protected void onEditClick2() {
-        if (editID.getText().equals("Edit")) {
-            // Unlock existing text
-            textArea.setEditable(true);
-            textArea.requestFocus();
-            editID.setText("Save");
-        } else {
-            // Save edits to file
-            saveToFile();
-            textArea.setEditable(false);
-            editID.setText("Edit");
-            showMessage(editID, " Edited!");
+        if (!taskName.isEmpty() && !taskName.equals("TYPE HERE...")) {
+            // Create task with default 1 point and false completion
+            Task newTask = new Task(taskName, 1, false);
+            TaskManager.getInstance().addTask(newTask); // saves to file automatically
         }
+
+        // Refresh display to show task names only
+        loadFromFile();
+        textArea.setEditable(false);
+        addID.setText("Add");
+        showMessage(addID, "Saved!");
     }
+}
+
+@FXML
+protected void onEditClick2() {
+    if (editID.getText().equals("Edit")) {
+        // Unlock existing text for editing
+        textArea.setEditable(true);
+        textArea.requestFocus();
+        editID.setText("Save");
+    } else {
+        // Get the edited lines from the text area
+        String[] lines = textArea.getText().trim().split("\n");
+        ArrayList<Task> currentTasks = TaskManager.getInstance().getTasks();
+
+        for (int i = 0; i < lines.length && i < currentTasks.size(); i++) {
+            String newName = lines[i].trim();
+            if (!newName.isEmpty()) {
+                // Keep same points and completion, just update the name
+                Task oldTask = currentTasks.get(i);
+                Task updatedTask = new Task(newName, oldTask.getPoints(), oldTask.isTaskIsCompleted());
+                TaskManager.getInstance().editTask(oldTask, updatedTask);
+            }
+        }
+
+        loadFromFile();
+        textArea.setEditable(false);
+        editID.setText("Edit");
+        showMessage(editID, "Edited!");
+    }
+}
+
 
     @FXML
     protected void onRemoveClick() {
-        // Clear file and text area
-        textArea.clear();
+        // Get the task names currently shown in the text area
+        String[] lines = textArea.getText().trim().split("\n");
+        ArrayList<Task> currentTasks = TaskManager.getInstance().getTasks();
+
+        // Find and remove each task by name match
+        for (String line : lines) {
+            String name = line.trim();
+            for (Task task : new ArrayList<>(currentTasks)) {
+                if (task.getTaskName().equals(name)) {
+                    TaskManager.getInstance().removeTask(task);
+                    break;
+                }
+            }
+        }
+
+        loadFromFile();
         textArea.setEditable(false);
         textArea.setText("TYPE HERE...");
         addID.setText("Add");
         editID.setText("Edit");
-        saveToFile();
-        showMessage(removeID, " Removed!");
+        showMessage(removeID, "Removed!");
     }
 
     // ── Message Helper ────────────────────────────────────────────
