@@ -1,2 +1,2 @@
-Take out trash,3,false
+Take out trash,1,false
 code,1,false
