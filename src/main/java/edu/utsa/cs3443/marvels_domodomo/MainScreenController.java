@@ -148,6 +148,7 @@ public class MainScreenController {
         heartManager();
     }
 
+
     private void switchScene(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Scene scene = new Scene(loader.load());
