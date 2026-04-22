@@ -1,14 +1,12 @@
-<!--Please edit with a choice box and Ill be forever greatful:-->
-        <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-        <?import javafx.geometry.Rectangle2D?>
-        <?import javafx.scene.control.Button?>
-        <?import javafx.scene.image.Image?>
-        <?import javafx.scene.image.ImageView?>
-        <?import javafx.scene.layout.Pane?>
-        <?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.marvels_domodomo.OptionsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.marvels_domodomo.OptionsController">
     <children>
         <ImageView fitHeight="720.0" fitWidth="1280.0">
             <image>
@@ -18,12 +16,12 @@
                 <Rectangle2D />
             </viewport>
         </ImageView>
-        <Button fx:id="optionsButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="26.0" layoutY="47.0" mnemonicParsing="false" onAction="#onOptionsClick" prefHeight="103.0" prefWidth="250.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Options" textAlignment="CENTER">
+        <Button fx:id="optionsButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="26.0" layoutY="47.0" mnemonicParsing="false" onAction="#onOptionsClick" prefHeight="97.0" prefWidth="250.0" styleClass="pixel-button-active" stylesheets="@../../../../style.css" text="Options" textAlignment="CENTER">
             <font>
                 <Font name="Oswald Medium" size="31.0" />
             </font>
         </Button>
-        <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="329.0" layoutY="51.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="97.0" prefWidth="254.0" styleClass="pixel-button-active" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
+        <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="329.0" layoutY="51.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="97.0" prefWidth="254.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
             <font>
                 <Font name="Oswald Medium" size="31.0" />
             </font>
@@ -38,5 +36,25 @@
                 <Font name="Oswald Medium" size="31.0" />
             </font>
         </Button>
+      <Pane layoutX="22.0" layoutY="191.0" prefHeight="449.0" prefWidth="1165.0">
+         <children>
+            <ImageView fitHeight="459.0" fitWidth="1088.0" layoutX="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/BGDomo/ToDoScreenCanvas.PNG" />
+               </image>
+            </ImageView>
+            <Label layoutX="282.0" layoutY="65.0" text="Change Color Scheme:">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <MenuButton layoutX="804.0" layoutY="72.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Select">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Red" />
+                <MenuItem mnemonicParsing="false" text="BLue" />
+              </items>
+            </MenuButton>
+         </children>
+      </Pane>
     </children>
 </Pane>
