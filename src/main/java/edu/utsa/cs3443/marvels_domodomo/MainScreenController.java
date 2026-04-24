@@ -123,6 +123,7 @@ public class MainScreenController {
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
 
         if (taskOne.isSelected()) {
+            launchConfetti();
             Task task = tasks.get(0);
             TaskManager.getInstance().addPoints(task.getPoints());
             points = TaskManager.getInstance().getPoints();
@@ -131,6 +132,7 @@ public class MainScreenController {
             System.out.println("Points: " + points + "\n");
 
         } else if (taskTwo.isSelected()) {
+            launchConfetti();
             Task task = tasks.get(1);
             TaskManager.getInstance().addPoints(task.getPoints());
             points = TaskManager.getInstance().getPoints();
@@ -138,6 +140,7 @@ public class MainScreenController {
             TaskManager.getInstance().removeTask(task);
 
         } else if (taskThree.isSelected()) {
+            launchConfetti();
             Task task = tasks.get(2);
             TaskManager.getInstance().addPoints(task.getPoints());
             points = TaskManager.getInstance().getPoints();
@@ -147,7 +150,48 @@ public class MainScreenController {
 
         heartManager();
     }
+    private void launchConfetti() {
+        javafx.scene.layout.Pane root = (javafx.scene.layout.Pane) heartOne.getScene().getRoot();
 
+        // Load all 14 frames
+        Image[] frames = new Image[14];
+        for (int i = 1; i <= 14; i++) {
+            frames[i - 1] = new Image(
+                    getClass().getResourceAsStream("/images/BGDomo/confetti_Anim_DomoF" + i + ".png")
+            );
+        }
+
+        // ✅ Use scene size instead of root size
+        ImageView animation = new ImageView(frames[0]);
+        animation.setFitWidth(heartOne.getScene().getWidth());
+        animation.setFitHeight(heartOne.getScene().getHeight());
+        animation.setPreserveRatio(false);
+        animation.setMouseTransparent(true); // clicks pass through underneath
+        root.getChildren().add(animation);
+
+        int[] currentFrame = {0};
+        long frameDuration = 80_000_000L; // 80ms per frame — adjust for speed
+        long[] lastFrame = {0};
+
+        javafx.animation.AnimationTimer timer = new javafx.animation.AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if (now - lastFrame[0] >= frameDuration) {
+                    currentFrame[0]++;
+
+                    if (currentFrame[0] >= frames.length) {
+                        root.getChildren().remove(animation);
+                        stop();
+                        return;
+                    }
+
+                    animation.setImage(frames[currentFrame[0]]);
+                    lastFrame[0] = now;
+                }
+            }
+        };
+        timer.start();
+    }
 
     private void switchScene(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
