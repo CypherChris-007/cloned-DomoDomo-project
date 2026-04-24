@@ -161,7 +161,7 @@ public class MainScreenController {
             );
         }
 
-        // ✅ Use scene size instead of root size
+        // Use scene size instead of root size
         ImageView animation = new ImageView(frames[0]);
         animation.setFitWidth(heartOne.getScene().getWidth());
         animation.setFitHeight(heartOne.getScene().getHeight());
