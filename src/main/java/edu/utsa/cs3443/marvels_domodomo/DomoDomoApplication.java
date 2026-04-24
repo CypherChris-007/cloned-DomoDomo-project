@@ -4,8 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.transform.Scale;
-import javafx.scene.layout.Pane;
 import java.io.IOException;
 
 public class DomoDomoApplication extends Application {
@@ -21,7 +19,4 @@ public class DomoDomoApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
 }

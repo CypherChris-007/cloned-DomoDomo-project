@@ -38,11 +38,9 @@
         </Button>
       <Pane layoutX="22.0" layoutY="191.0" prefHeight="449.0" prefWidth="1165.0">
          <children>
-            <ImageView fitHeight="459.0" fitWidth="1088.0" layoutX="49.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../images/BGDomo/ToDoScreenCanvas.PNG" />
-               </image>
-            </ImageView>
+             <ImageView fitHeight="459.0" fitWidth="1088.0" layoutX="49.0" pickOnBounds="true" preserveRatio="true">
+                 <Image url="@../../../../images/BGDomo/ToDoScreenCanvas.PNG"/>
+             </ImageView>
             <Label layoutX="282.0" layoutY="65.0" text="Change Color Scheme:">
                <font>
                   <Font size="35.0" />

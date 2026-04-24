@@ -94,6 +94,7 @@ public class TaskManager {
      * Skips blank lines and malformed lines silently.
      */
     // Ask in meeting: Are we deleting data or just removing from the list. - Gio
+    // We are deleting the whole list, but I plan to have an option to delet all or indidual - Chris - 4/24/2026
     public void loadTasks() {
         tasks.clear();
         File file = new File(FILE_PATH);
@@ -104,7 +105,7 @@ public class TaskManager {
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
                 if (line.isEmpty()) continue;
-
+                // taskName, 1-3 points, True or False
                 String[] parts = line.split(",", 3);  // max 3 parts
                 if (parts.length < 3) continue;       // skip malformed lines
 
