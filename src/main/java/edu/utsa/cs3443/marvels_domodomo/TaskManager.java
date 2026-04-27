@@ -49,6 +49,19 @@ public class TaskManager {
         this.tasks = tasks;
     }
 
+    public void removeTaskByName(String taskName) {
+        // We use an Iterator or a loop to safely remove items from an ArrayList
+        ArrayList<Task> tasks = getTasks();
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getTaskName().equals(taskName)) {
+                tasks.remove(i);
+                // Assuming you have a method to save changes to your .txt file
+                saveTasks();
+                break; // Stop once we've found and removed the match
+            }
+        }
+    }
+
     // ── CRUD ──────────────────────────────────────────────────────
     public void addTask(Task task) {
         tasks.add(task);

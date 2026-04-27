@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -26,7 +27,7 @@
                 <Font name="Oswald Medium" size="31.0" />
             </font>
         </Button>
-        <Button fx:id="EditID" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="657.0" layoutY="48.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="97.0" prefWidth="254.0" styleClass="pixel-button-active" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
+        <Button fx:id="EditID" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="657.0" layoutY="48.0" mnemonicParsing="false" onAction="#onEditTabClick" prefHeight="97.0" prefWidth="254.0" styleClass="pixel-button-active" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
             <font>
                 <Font name="Oswald Medium" size="31.0" />
             </font>
@@ -53,16 +54,21 @@
                         <Font name="Oswald Medium" size="31.0" />
                     </font>
                 </Button>
-                <Button fx:id="removeID" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="148.0" layoutY="289.0" mnemonicParsing="false" onAction="#onRemoveClick" prefHeight="113.0" prefWidth="294.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Remove" textAlignment="CENTER">
-                    <font>
-                        <Font name="Oswald Medium" size="31.0" />
-                    </font>
-                </Button>
                 <Pane layoutX="436.0" layoutY="50.0" prefHeight="321.0" prefWidth="581.0">
                     <children>
-                        <TextArea fx:id="textArea" layoutX="82.0" layoutY="28.0" prefHeight="321.0" prefWidth="515.0" promptText="Type Here . . . " />
+                        <TextArea fx:id="textArea" layoutX="82.0" layoutY="28.0" prefHeight="321.0" prefWidth="515.0" promptText="Type Here . . . " stylesheets="@../../../../style.css" />
                     </children>
                 </Pane>
+            <SplitMenuButton fx:id="removeID" layoutX="168.0" layoutY="305.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="254.0" stylesheets="@../../../../style.css" text="Remove">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onRemoveAllClick" text="Remove All" />
+                <MenuItem mnemonicParsing="false" onAction="#onRemoveSelectedClick" text="Select Task" />
+              </items>
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="pixel-button" />
+               </styleClass>
+            </SplitMenuButton>
             </children>
         </Pane>
     </children>
