@@ -1,42 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600" prefWidth="800" stylesheets="@/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.marvels_domodomo.OptionsController">
-    <children>
-        <!-- Background Image -->
-        <ImageView fx:id="backgroundImage" preserveRatio="false" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-            <image>
-                <Image url="@../../../../images/BGDomo/BaseBackGround.PNG" />
-            </image>
-        </ImageView>
-
-
-        <Button fx:id="optionsButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="50.0" layoutY="20.0" mnemonicParsing="false" onAction="#onOptionsClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Options" textAlignment="CENTER">
-            <font>
-                <Font name="Oswald Medium" size="31.0" />
-            </font>
-        </Button>
-        <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="220.0" layoutY="20.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
-            <font>
-                <Font name="Oswald Medium" size="31.0" />
-            </font>
-        </Button>
-        <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="390.0" layoutY="20.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
-            <font>
-                <Font name="Oswald Medium" size="31.0" />
-            </font>
-        </Button>
-        <Button fx:id="petButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="560.0" layoutY="20.0" mnemonicParsing="false" onAction="#onPetClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Pet" textAlignment="CENTER">
-            <font>
-                <Font name="Oswald Medium" size="31.0" />
-            </font>
-        </Button>
-<!--     <ComboBox fx:id="choiceDropdown"  prefHeight="10" prefWidth="180" promptText="Select Option" AnchorPane.bottomAnchor="-155.0" AnchorPane.rightAnchor="608.0" AnchorPane.topAnchor="400.0" />-->
-
-    </children>
-
-</AnchorPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.utsa.cs3443.marvels_domodomo.OptionsController">
+    <ImageView fitHeight="720.0" fitWidth="1280.0">
+        <image>
+            <Image url="@../../../../images/BGDomo/BaseBackGround.PNG"/>
+        </image>
+        <viewport>
+            <Rectangle2D/>
+        </viewport>
+    </ImageView>
+    <Button fx:id="optionsButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0"
+            layoutX="26.0" layoutY="47.0" mnemonicParsing="false" onAction="#onOptionsClick" prefHeight="97.0"
+            prefWidth="250.0" styleClass="pixel-button-active" stylesheets="@../../../../style.css" text="Options"
+            textAlignment="CENTER">
+        <font>
+            <Font name="Oswald Medium" size="31.0"/>
+        </font>
+    </Button>
+    <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0"
+            layoutX="329.0" layoutY="51.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="97.0"
+            prefWidth="254.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="To-Do"
+            textAlignment="CENTER">
+        <font>
+            <Font name="Oswald Medium" size="31.0"/>
+        </font>
+    </Button>
+    <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0"
+            layoutX="647.0" layoutY="49.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="103.0"
+            prefWidth="250.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Edit"
+            textAlignment="CENTER">
+        <font>
+            <Font name="Oswald Medium" size="31.0"/>
+        </font>
+    </Button>
+    <Button fx:id="petButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0"
+            layoutX="959.0" layoutY="50.0" mnemonicParsing="false" onAction="#onPetClick" prefHeight="103.0"
+            prefWidth="250.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Pet"
+            textAlignment="CENTER">
+        <font>
+            <Font name="Oswald Medium" size="31.0"/>
+        </font>
+    </Button>
+    <Pane layoutX="22.0" layoutY="191.0" prefHeight="449.0" prefWidth="1165.0">
+        <children>
+            <ImageView fitHeight="459.0" fitWidth="1088.0" layoutX="49.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../../../images/BGDomo/ToDoScreenCanvas.PNG"/>
+            </ImageView>
+          <Label layoutX="282.0" layoutY="65.0" text="Change Color Scheme:">
+              <font>
+                  <Font size="35.0"/>
+              </font>
+          </Label>
+          <MenuButton layoutX="804.0" layoutY="72.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0"
+                      text="Select">
+              <items>
+                  <MenuItem mnemonicParsing="false" text="Red"/>
+                  <MenuItem mnemonicParsing="false" text="BLue"/>
+              </items>
+          </MenuButton>
+        </children>
+    </Pane>
+</Pane>

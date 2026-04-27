@@ -1,16 +1,18 @@
 package edu.utsa.cs3443.marvels_domodomo;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class OptionsController {
-
     @FXML
     private Button editButton;
     @FXML
@@ -19,9 +21,9 @@ public class OptionsController {
     private Button petButton;
     @FXML
     private Button toDoButton;
-    @FXML
-    private ComboBox<String> choiceDropdown;
 
+
+    // TOP TAB BUTTONS
     @FXML
     protected void onOptionsClick() throws Exception {
         switchScene("Options-screen.fxml");
@@ -42,17 +44,13 @@ public class OptionsController {
         switchScene("Pet-screen.fxml");
     }
 
-    @FXML
-    public void initialize() {
-        choiceDropdown.getItems().addAll("Option 1", "Option 2", "Option 3");
-    }
 
     private void switchScene(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(fxml)
         );
         Scene scene = new Scene(loader.load());
-        Stage stage = (Stage)  optionsButton.getScene().getWindow();
+        Stage stage = (Stage) optionsButton.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }

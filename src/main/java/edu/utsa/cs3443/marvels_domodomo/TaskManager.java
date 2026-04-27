@@ -14,6 +14,12 @@ public class TaskManager {
 
     // ── Singleton ────────────────────────────────────────────────
     private static TaskManager instance;
+    // This is so we can keep track of the points for the To-Do hearts.
+    private int points = 0;
+
+    public int getPoints() { return points; }
+    public void addPoints(int p) { points += p; }
+    public void resetPoints() { points = 0; }
 
     /** Call this everywhere instead of new TaskManager() */
     public static TaskManager getInstance() {
@@ -41,6 +47,19 @@ public class TaskManager {
 
     public void setTasks(ArrayList<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public void removeTaskByName(String taskName) {
+        // We use an Iterator or a loop to safely remove items from an ArrayList
+        ArrayList<Task> tasks = getTasks();
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getTaskName().equals(taskName)) {
+                tasks.remove(i);
+                // Assuming you have a method to save changes to your .txt file
+                saveTasks();
+                break; // Stop once we've found and removed the match
+            }
+        }
     }
 
     // ── CRUD ──────────────────────────────────────────────────────
@@ -88,6 +107,7 @@ public class TaskManager {
      * Skips blank lines and malformed lines silently.
      */
     // Ask in meeting: Are we deleting data or just removing from the list. - Gio
+    // We are deleting the whole list, but I plan to have an option to delet all or indidual - Chris - 4/24/2026
     public void loadTasks() {
         tasks.clear();
         File file = new File(FILE_PATH);
@@ -98,7 +118,7 @@ public class TaskManager {
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
                 if (line.isEmpty()) continue;
-
+                // taskName, 1-3 points, True or False
                 String[] parts = line.split(",", 3);  // max 3 parts
                 if (parts.length < 3) continue;       // skip malformed lines
 

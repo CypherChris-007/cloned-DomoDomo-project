@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,13 +37,29 @@ public class MainScreenController {
     private CheckBox taskTwo;
     @FXML
     private CheckBox taskThree;
+    @FXML
+    private ImageView heartOne;
+    @FXML
+    private ImageView heartTwo;
+    @FXML
+    private ImageView heartThree;
+    private Image emptyHeart;
+    // At the top of your class
+    private Image fullHeart;
+
+    private int points = 0;
 
     TaskManager taskManager;
 
     public void initialize() {
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
+        points = TaskManager.getInstance().getPoints();
+        emptyHeart = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts_Empty.PNG"));
+        fullHeart  = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts.PNG"));
         System.out.println("Loaded tasks: " + tasks.size()); // check this in console
+
         taskDisplay();
+        heartManager();
     }
 
     // TOP TAB BUTTONS
@@ -66,6 +84,25 @@ public class MainScreenController {
     }
 
     // TO-DO METHODS
+    protected void heartManager() {
+        if (points >= 3) {
+            heartOne.setImage(fullHeart);
+            heartTwo.setImage(fullHeart);
+            heartThree.setImage(fullHeart);
+        } else if (points == 2) {
+            heartOne.setImage(fullHeart);
+            heartTwo.setImage(fullHeart);
+            heartThree.setImage(emptyHeart);
+        } else if (points == 1) {
+            heartOne.setImage(fullHeart);
+            heartTwo.setImage(emptyHeart);
+            heartThree.setImage(emptyHeart);
+        } else if (points <= 0) {
+            heartOne.setImage(emptyHeart);
+            heartTwo.setImage(emptyHeart);
+            heartThree.setImage(emptyHeart);
+        }
+    }
     protected void taskDisplay() {
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
         CheckBox[] boxes = {taskOne, taskTwo, taskThree};
@@ -82,25 +119,82 @@ public class MainScreenController {
     }
 
     @FXML
-    protected void onBoxClick(ActionEvent pEvent) throws IOException{
+    protected void onBoxClick(ActionEvent pEvent) throws IOException {
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
-        if(taskOne.isSelected()){
+
+        if (taskOne.isSelected()) {
+            launchConfetti();
             Task task = tasks.get(0);
+            TaskManager.getInstance().addPoints(task.getPoints());
+            points = TaskManager.getInstance().getPoints();
+            taskOne.setVisible(false);
             TaskManager.getInstance().removeTask(task);
+            System.out.println("Points: " + points + "\n");
+
         } else if (taskTwo.isSelected()) {
+            launchConfetti();
             Task task = tasks.get(1);
+            TaskManager.getInstance().addPoints(task.getPoints());
+            points = TaskManager.getInstance().getPoints();
+            taskTwo.setVisible(false);
             TaskManager.getInstance().removeTask(task);
-        }else if(taskThree.isSelected()){
+
+        } else if (taskThree.isSelected()) {
+            launchConfetti();
             Task task = tasks.get(2);
+            TaskManager.getInstance().addPoints(task.getPoints());
+            points = TaskManager.getInstance().getPoints();
+            taskThree.setVisible(false);
             TaskManager.getInstance().removeTask(task);
         }
+
+        heartManager();
+    }
+    private void launchConfetti() {
+        javafx.scene.layout.Pane root = (javafx.scene.layout.Pane) heartOne.getScene().getRoot();
+
+        // Load all 14 frames
+        Image[] frames = new Image[14];
+        for (int i = 1; i <= 14; i++) {
+            frames[i - 1] = new Image(
+                    getClass().getResourceAsStream("/images/BGDomo/confetti_Anim_DomoF" + i + ".png")
+            );
+        }
+
+        // Use scene size instead of root size
+        ImageView animation = new ImageView(frames[0]);
+        animation.setFitWidth(heartOne.getScene().getWidth());
+        animation.setFitHeight(heartOne.getScene().getHeight());
+        animation.setPreserveRatio(false);
+        animation.setMouseTransparent(true); // clicks pass through underneath
+        root.getChildren().add(animation);
+
+        int[] currentFrame = {0};
+        long frameDuration = 80_000_000L; // 80ms per frame — adjust for speed
+        long[] lastFrame = {0};
+
+        javafx.animation.AnimationTimer timer = new javafx.animation.AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if (now - lastFrame[0] >= frameDuration) {
+                    currentFrame[0]++;
+
+                    if (currentFrame[0] >= frames.length) {
+                        root.getChildren().remove(animation);
+                        stop();
+                        return;
+                    }
+
+                    animation.setImage(frames[currentFrame[0]]);
+                    lastFrame[0] = now;
+                }
+            }
+        };
+        timer.start();
     }
 
-
     private void switchScene(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(fxml)
-        );
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) editButton.getScene().getWindow();
         stage.setScene(scene);

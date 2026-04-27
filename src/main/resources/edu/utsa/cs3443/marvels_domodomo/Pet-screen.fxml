@@ -6,35 +6,51 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600" prefWidth="800" stylesheets="@/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.marvels_domodomo.PetController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.marvels_domodomo.PetController">
     <children>
-        <!-- Background Image -->
-        <ImageView fx:id="backgroundImage" preserveRatio="false" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <ImageView fitHeight="720.0" fitWidth="1280.0">
             <image>
-                <Image url="@../../../../images/BGDomo/BaseBackGround.PNG" />
+                <Image url="@../../../../images/BGDomo/ScreenOneSketch.PNG" />
+            </image>
+            <viewport>
+                <Rectangle2D />
+            </viewport>
+        </ImageView>
+        <Button fx:id="optionsButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="26.0" layoutY="47.0" mnemonicParsing="false" onAction="#onOptionsClick" prefHeight="103.0" prefWidth="250.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Options" textAlignment="CENTER">
+            <font>
+                <Font name="Oswald Medium" size="31.0" />
+            </font>
+        </Button>
+        <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="329.0" layoutY="51.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="97.0" prefWidth="254.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
+            <font>
+                <Font name="Oswald Medium" size="31.0" />
+            </font>
+        </Button>
+        <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="647.0" layoutY="49.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="103.0" prefWidth="250.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
+            <font>
+                <Font name="Oswald Medium" size="31.0" />
+            </font>
+        </Button>
+        <Button fx:id="petButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="959.0" layoutY="50.0" mnemonicParsing="false" onAction="#onPetClick" prefHeight="97.0" prefWidth="250.0" styleClass="pixel-button-active" stylesheets="@../../../../style.css" text="Pet" textAlignment="CENTER">
+            <font>
+                <Font name="Oswald Medium" size="31.0" />
+            </font>
+        </Button>
+      <Pane prefHeight="200.0" prefWidth="200.0" />
+        <ImageView fitHeight="270.0" fitWidth="288.0" layoutX="276.0" layoutY="258.0">
+            <image>
+                <Image url="@../../../../images/BGDomo/catt.png" />
             </image>
         </ImageView>
+      <Pane layoutX="265.0" layoutY="404.0" prefHeight="206.0" prefWidth="866.0">
+         <children>
+            <Label layoutX="-13.0" layoutY="63.0" prefHeight="129.0" prefWidth="866.0" text="You are 77.3% away from achieving all your goals &#10;&#9; today –– don't give up!" textOverrun="CLIP">
+               <font>
+                  <Font name="Microsoft Tai Le" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
 
-
-        <Button fx:id="optionsButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="50.0" layoutY="20.0" mnemonicParsing="false" onAction="#onOptionsClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Options" textAlignment="CENTER">
-            <font>
-                <Font name="Oswald Medium" size="31.0" />
-            </font>
-        </Button>
-        <Button fx:id="toDoButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="220.0" layoutY="20.0" mnemonicParsing="false" onAction="#onToDoClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="To-Do" textAlignment="CENTER">
-            <font>
-                <Font name="Oswald Medium" size="31.0" />
-            </font>
-        </Button>
-        <Button fx:id="editButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="390.0" layoutY="20.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
-            <font>
-                <Font name="Oswald Medium" size="31.0" />
-            </font>
-        </Button>
-        <Button fx:id="petButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="560.0" layoutY="20.0" mnemonicParsing="false" onAction="#onPetClick" prefHeight="50.0" prefWidth="150.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Pet" textAlignment="CENTER">
-            <font>
-                <Font name="Oswald Medium" size="31.0" />
-            </font>
-        </Button>
     </children>
-</AnchorPane>
+</Pane>
