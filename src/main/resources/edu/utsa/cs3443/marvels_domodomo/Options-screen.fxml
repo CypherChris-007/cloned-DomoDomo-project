@@ -9,7 +9,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="edu.utsa.cs3443.marvels_domodomo.OptionsController">
-    <ImageView fitHeight="720.0" fitWidth="1280.0">
+    <ImageView fx:id="backgroundImage" fitHeight="720.0" fitWidth="1280.0">
         <image>
             <Image url="@../../../../images/BGDomo/BaseBackGround.PNG"/>
         </image>
@@ -59,11 +59,11 @@
                   <Font size="35.0"/>
               </font>
           </Label>
-          <MenuButton layoutX="804.0" layoutY="72.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0"
-                      text="Select">
-              <items>
+            <MenuButton fx:id="colorMenuButton" layoutX="804.0" layoutY="72.0"
+                        mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Select">
+                <items>
                   <MenuItem mnemonicParsing="false" text="Red"/>
-                  <MenuItem mnemonicParsing="false" text="BLue"/>
+                  <MenuItem mnemonicParsing="false" text="Blue"/>
               </items>
           </MenuButton>
         </children>
