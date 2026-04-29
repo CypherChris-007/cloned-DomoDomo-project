@@ -3,14 +3,12 @@ package edu.utsa.cs3443.marvels_domodomo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.image.ImageView;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class OptionsController {
     @FXML
@@ -21,7 +19,8 @@ public class OptionsController {
     private Button petButton;
     @FXML
     private Button toDoButton;
-
+    @FXML private ImageView backgroundImage; // ← new
+    @FXML private MenuButton colorMenuButton; // ← new (add fx:id="colorMenuButton" in FXML)
 
     // TOP TAB BUTTONS
     @FXML
@@ -44,11 +43,38 @@ public class OptionsController {
         switchScene("Pet-screen.fxml");
     }
 
+    @FXML
+    public void initialize() {
+        // Safety check — will print to console if something is still null
+        if (backgroundImage == null) System.out.println("ERROR: backgroundImage is null!");
+        if (colorMenuButton == null)  System.out.println("ERROR: colorMenuButton is null!");
+
+        // Wire up menu items to color changes
+        for (MenuItem item : colorMenuButton.getItems()) {
+            item.setOnAction(e -> applyColorScheme(item.getText()));
+        }
+    }
+
+    private void applyColorScheme(String color) {
+        ColorAdjust colorAdjust = new ColorAdjust();
+
+        switch (color) {
+            case "Red" -> {
+                colorAdjust.setHue(-1.0);       // shift green → red
+                colorAdjust.setSaturation(0.3);
+            }
+            case "Blue" -> {
+                colorAdjust.setHue(0.5);        // shift green → blue
+                colorAdjust.setSaturation(0.2);
+            }
+            default -> colorAdjust.setHue(0.0); // no change (original green)
+        }
+
+        backgroundImage.setEffect(colorAdjust);
+    }
 
     private void switchScene(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(fxml)
-        );
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) optionsButton.getScene().getWindow();
         stage.setScene(scene);
