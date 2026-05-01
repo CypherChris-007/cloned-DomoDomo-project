@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.*;
@@ -20,12 +21,27 @@ public class EditController {
     @FXML private Button editID;
     @FXML private javafx.scene.control.SplitMenuButton removeID; // Matches FXML SplitMenuButton type
     @FXML private TextArea textArea;
+    // Added for background change
+    @FXML private ImageView backgroundImage; // ← new
+
 
     private boolean isSelectionModeActive = false; // User hover selection
     private static final String FILE_PATH = "data/tasks.txt";
 
     @FXML
     public void initialize() {
+
+
+        // test fx:id is valid
+        if (backgroundImage == null) System.out.println("ERROR: backgroundImage is null!");
+
+
+        // Added for background change, getter call
+        if (backgroundImage != null) {
+            backgroundImage.setEffect(OptionsController.getSharedEffect());
+        }
+
+
         try {
             File dataFolder = new File("data");
             if (!dataFolder.exists())

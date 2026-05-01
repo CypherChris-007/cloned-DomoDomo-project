@@ -12,8 +12,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 public class PetController {
 
 //    @FXML private Label motivationLabel;
@@ -23,13 +24,38 @@ public class PetController {
     @FXML private Button toDoButton;
     @FXML private Button editButton;
     @FXML private Button petButton;
+    // Added for background change
+    @FXML private ImageView backgroundImage;
+    @FXML private ImageView spriteImage; // ← new
+
 
     /**
      * Called automatically by JavaFX after the FXML is loaded.
      * Calculates completion % and sets the motivational message.
      */
-//    @FXML
-//    public void initialize() {
+    @FXML
+    public void initialize() {
+
+        // test fx:id is valid
+        if (backgroundImage == null) System.out.println("ERROR: backgroundImage is null!");
+        if (spriteImage == null) System.out.println("ERROR: spriteImage is null!");
+
+
+
+        // Added for background change, getter call
+        if (backgroundImage != null) {
+            backgroundImage.setEffect(OptionsController.getSharedEffect());
+        }
+
+        if (spriteImage != null) {
+            spriteImage.setImage(new Image(getClass().getResourceAsStream(OptionsController.getSharedSpritePath())));
+        }
+
+
+
+
+
+
 //        double completionPct = TaskManager.getInstance().getCompletionPercent();
 //        double remaining = 100.0 - completionPct;
 //
@@ -48,7 +74,7 @@ public class PetController {
 //        }
 //
 //        motivationLabel.setText(message);
-//    }
+    }
 
     // ── Tab Navigation ────────────────────────────────────────────
     @FXML

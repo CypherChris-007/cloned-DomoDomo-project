@@ -64,8 +64,23 @@
                 <items>
                   <MenuItem mnemonicParsing="false" text="Red"/>
                   <MenuItem mnemonicParsing="false" text="Blue"/>
+                  <MenuItem mnemonicParsing="false" text="Default"/>
               </items>
           </MenuButton>
+            <Label layoutX="282.0" layoutY="115.0" text="Change Sprite Scheme:">
+                <font>
+                    <Font size="35.0"/>
+                </font>
+            </Label>
+            <MenuButton fx:id="spriteMenuButton" layoutX="804.0" layoutY="122.0"
+                        mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Select">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Orange"/>
+                    <MenuItem mnemonicParsing="false" text="Rowdy"/>
+                    <MenuItem mnemonicParsing="false" text="Default"/>
+
+                </items>
+            </MenuButton>
         </children>
     </Pane>
 </Pane>

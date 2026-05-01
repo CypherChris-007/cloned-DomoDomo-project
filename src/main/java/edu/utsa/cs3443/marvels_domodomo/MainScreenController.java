@@ -43,6 +43,18 @@ public class MainScreenController {
     private ImageView heartTwo;
     @FXML
     private ImageView heartThree;
+
+
+    // Added for background change
+    @FXML private ImageView backgroundImage; // ← new
+
+    // Added for sprite change
+    @FXML private ImageView spriteImage; // ← new
+
+
+
+
+
     private Image emptyHeart;
     // At the top of your class
     private Image fullHeart;
@@ -52,6 +64,22 @@ public class MainScreenController {
     TaskManager taskManager;
 
     public void initialize() {
+        // test fx:id is valid
+        if (backgroundImage == null) System.out.println("ERROR: backgroundImage is null!");
+//        if (spriteImage == null) System.out.println("ERROR: spriteImage is null!");
+
+        // Added for background change, getter call
+        if (backgroundImage != null) {
+            backgroundImage.setEffect(OptionsController.getSharedEffect());
+        }
+
+
+        if (spriteImage != null) {
+            spriteImage.setImage(new Image(getClass().getResourceAsStream(OptionsController.getSharedSpritePath())));
+        }
+
+
+
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
         points = TaskManager.getInstance().getPoints();
         emptyHeart = new Image(getClass().getResourceAsStream("/images/BGDomo/PetHearts_Empty.PNG"));

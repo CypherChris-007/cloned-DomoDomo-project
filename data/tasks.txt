@@ -1,3 +1,0 @@
-code,1,false
-Take out trash,1,false
-Drink my Dr Pepper,1,false
