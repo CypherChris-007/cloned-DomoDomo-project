@@ -44,7 +44,7 @@
         </ImageView>
       <Pane layoutX="265.0" layoutY="404.0" prefHeight="206.0" prefWidth="866.0">
          <children>
-            <Label layoutX="-13.0" layoutY="63.0" prefHeight="129.0" prefWidth="866.0" text="You are 77.3% away from achieving all your goals &#10;&#9; today –– don't give up!" textOverrun="CLIP">
+            <Label fx:id="statusLabel" layoutX="-13.0" layoutY="63.0" prefHeight="129.0" prefWidth="866.0" text="You are 77.3% away from achieving all your goals &#10;&#9; today –– don't give up!" textOverrun="CLIP">
                <font>
                   <Font name="Microsoft Tai Le" size="36.0" />
                </font>

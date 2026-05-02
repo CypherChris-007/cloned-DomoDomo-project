@@ -1,3 +1,11 @@
+/**
+ * @author: Nicholas
+ *
+ * @purpose: OptionsController handles the Options screen.
+ * Upon drop-down you can change the apps background color and sprite character
+ * for personalization and re-playability.
+ */
+
 package edu.utsa.cs3443.marvels_domodomo;
 
 import javafx.fxml.FXML;

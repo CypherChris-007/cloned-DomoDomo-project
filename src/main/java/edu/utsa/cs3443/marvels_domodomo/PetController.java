@@ -2,8 +2,8 @@
  * @author: Bidisha
  *
  * @purpose: PetController handles the Pet screen.
- * Reads task completion % from the shared TaskManager singleton
- * and displays a motivational message to the user.
+ * Reads in dialogue.txt and randomizes a line in the file
+ * to display a motivational message to the user upon Pet button's nav bar click.
  */
 package edu.utsa.cs3443.marvels_domodomo;
 
@@ -15,11 +15,21 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class PetController {
+    private List<String> dialogueLines = new ArrayList<>();
+    private Random random = new Random();
 
 //    @FXML private Label motivationLabel;
 
     // Nav buttons — wire these in Pet-screen.fxml the same way other screens do
+    @FXML private Label statusLabel; // changes the text upon petButton click
     @FXML private Button optionsButton;
     @FXML private Button toDoButton;
     @FXML private Button editButton;
@@ -36,7 +46,9 @@ public class PetController {
     @FXML
     public void initialize() {
 
-        // test fx:id is valid
+        loadDialogue(); // Fills the list from dialogue.txt
+        updateLabel();  // Picks a random line immediately in dialogue.txt
+        // test if fx:id is valid
         if (backgroundImage == null) System.out.println("ERROR: backgroundImage is null!");
         if (spriteImage == null) System.out.println("ERROR: spriteImage is null!");
 
@@ -46,7 +58,7 @@ public class PetController {
         if (backgroundImage != null) {
             backgroundImage.setEffect(OptionsController.getSharedEffect());
         }
-
+        // Added for sprite change, getter call from resources directory
         if (spriteImage != null) {
             spriteImage.setImage(new Image(getClass().getResourceAsStream(OptionsController.getSharedSpritePath())));
         }
@@ -94,7 +106,44 @@ public class PetController {
 
     @FXML
     protected void onPetClick() throws Exception {
+        updateLabel();
+
         switchScene("Pet-screen.fxml");
+    }
+
+
+
+    // Will load a dialogue from the dialogue.txt file
+    private void loadDialogue() {
+        File file = new File("data/dialogue.txt");
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            dialogueLines.clear(); // Prevents duplicates if refreshed multiple times
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    dialogueLines.add(line);
+                }
+            }
+
+        } catch (Exception e) {
+            // prints the exact path the app is looking at if it fails
+            System.out.println("Error: Could not find file at " + file.getAbsolutePath());
+            statusLabel.setText("Keep going! You're doing great.");
+        }
+    }
+
+    // Will update the view's text at random within dialogue.txt upon call(click)
+    private void updateLabel() {
+        if (dialogueLines != null && !dialogueLines.isEmpty()) {
+            int randomIndex = random.nextInt(dialogueLines.size());
+            String randomLine = dialogueLines.get(randomIndex);
+
+            statusLabel.setText(randomLine);
+        } else {
+            // Fallback text if the file was empty or didn't load
+            statusLabel.setText("You're doing great! Keep it up!");
+        }
     }
 
     private void switchScene(String fxml) throws Exception {
