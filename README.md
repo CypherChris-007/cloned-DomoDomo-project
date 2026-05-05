@@ -1,5 +1,8 @@
-Marvels Project Repo
 # DomoDomo 
+
+Marvels Project Repo
+
+By Chris Jimenez, Giovanni De Leon, Nicholas Brown, Bidisha Dalai
 
 A JavaFX desktop application built by team **Marvels DomoDomo** for UTSA CS 3443. DomoDomo is a virtual pet + task manager combo app. Please take care of your Domo while staying on top of your to-do list!
 
