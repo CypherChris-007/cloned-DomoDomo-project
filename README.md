@@ -155,3 +155,8 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 
 **JavaFX runtime components missing**
 If you see a JavaFX-related error, ensure the `pom.xml` has the JavaFX Maven plugin configured. Do not try to run the `.java` file directly — always use `./mvnw javafx:run` (macOS/Linux) or `mvnw.cmd javafx:run` (Windows).
+
+---
+UML Diagram: 
+<img src="https://github.com/user-attachments/assets/5908262d-b3c2-4dd7-9fc0-a1ebe4eff401" />
+
