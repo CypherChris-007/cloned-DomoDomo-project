@@ -158,5 +158,6 @@ If you see a JavaFX-related error, ensure the `pom.xml` has the JavaFX Maven plu
 
 ---
 UML Diagram: 
-<img src="https://github.com/user-attachments/assets/5908262d-b3c2-4dd7-9fc0-a1ebe4eff401" />
+<img src="https://github.com/user-attachments/assets/762f7094-39da-42cf-a9ca-594d1758e58c" />
+
 
