@@ -13,10 +13,10 @@ import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
 
+
 public class EditController {
 
-    @FXML private Button EditID;
-    // @FXML optionsID, PetID, ToDoID is never used
+    @FXML private Button editTabButton;
     @FXML private Button addID;
     @FXML private Button editID;
     @FXML private javafx.scene.control.SplitMenuButton removeID; // Matches FXML SplitMenuButton type
@@ -27,6 +27,10 @@ public class EditController {
 
     private boolean isSelectionModeActive = false; // User hover selection
     private static final String FILE_PATH = "data/tasks.txt";
+    private static final String PLACEHOLDER = "Type Here . . .";//Prevent individual String errors
+
+    private boolean isAddModeActive = false;//Task doubling task issue check state
+    private boolean isEditModeActive = false;
 
     @FXML
     public void initialize() {
@@ -78,7 +82,7 @@ public class EditController {
     private void loadFromFile() {
         ArrayList<Task> tasks = TaskManager.getInstance().getTasks();
         if (tasks.isEmpty()) {
-            textArea.setText("Type Here . . . ");
+            textArea.setText(PLACEHOLDER);
         } else {
             StringBuilder display = new StringBuilder();
             for (Task task : tasks) {
@@ -132,36 +136,54 @@ public class EditController {
     // ADD
     @FXML
     protected void onAddClick() {
-        if (addID.getText().equals("Add")) {
+        if (!isAddModeActive) {
+            // entering add mode
+            isAddModeActive = true;
             textArea.setEditable(true);
             textArea.clear();
             textArea.requestFocus();
             addID.setText("Save");
         } else {
+            // saving
+            isAddModeActive = false;
+            addID.setDisable(true); // ← lock the button immediately to prevent task duplication
             String taskName = textArea.getText().trim();
 
-            if (!taskName.isEmpty() && !taskName.equals("TYPE HERE...")) {
+            if (!taskName.isEmpty() && !taskName.equals(PLACEHOLDER)) {
                 Task newTask = new Task(taskName, 1, false);
                 TaskManager.getInstance().addTask(newTask);
             }
 
+            // ← reload from file to stay in sync with what's on disk
+            TaskManager.getInstance().loadTasks();
             loadFromFile();
             textArea.setEditable(false);
             addID.setText("Add");
+            addID.setDisable(false); // ← re-enable after everything is done
             showMessage(addID, "Saved!");
         }
     }
 
     // EDIT
     @FXML
-    protected void onEditClick2() {
-        if (editID.getText().equals("Edit")) {
+    protected void onEditSaveToggle() {
+        if (!isEditModeActive) {
+            isEditModeActive = true;
             textArea.setEditable(true);
             textArea.requestFocus();
             editID.setText("Save");
         } else {
             String[] lines = textArea.getText().trim().split("\n");
             ArrayList<Task> currentTasks = TaskManager.getInstance().getTasks();
+
+            // Guard: abort if the user added or removed lines
+            if (lines.length != currentTasks.size()) {
+                showMessage(editID, "Line count mismatch!");
+                loadFromFile(); // reset to what's actually saved
+                textArea.setEditable(false);
+                editID.setText("Edit");
+                return;
+            }
 
             for (int i = 0; i < lines.length && i < currentTasks.size(); i++) {
                 String newName = lines[i].trim();
@@ -172,6 +194,7 @@ public class EditController {
                 }
             }
 
+            saveToFile(); // ← also fixes the Warning: save wasn't being called here
             loadFromFile();
             textArea.setEditable(false);
             editID.setText("Edit");
@@ -188,6 +211,8 @@ public class EditController {
         removeID.setText("Click Task...");
     }
 
+    private String pendingRemoveId = null; // changes the ID -> NUll, instead of not displaying
+
     private void handleTaskClickRemoval() {
         int caretPos = textArea.getCaretPosition();
         String fullText = textArea.getText();
@@ -200,6 +225,10 @@ public class EditController {
 
         String taskName = fullText.substring(lineStart, lineEnd).trim();
 
+        // Compute line index to find the matching task by position (not name)
+        String before = fullText.substring(0, lineStart);
+        int lineIndex = before.isEmpty() ? 0 : before.split("\n", -1).length;
+
         // Always reset mode BEFORE showMessage so it restores to "Remove" correctly
         isSelectionModeActive = false;
         textArea.setStyle("-fx-cursor: default;");
@@ -210,7 +239,7 @@ public class EditController {
             TaskManager.getInstance().removeTaskByName(taskName);
             saveToFile();
             loadFromFile();
-            showMessage(removeID, "Removed: " + taskName);
+            showMessage(removeID, "Removed " + taskName);
         } else {
             showMessage(removeID, "No task on that line!");
         }
@@ -239,12 +268,15 @@ public class EditController {
     // ── Scene Switch ──────────────────────────────────────────────
 
     private void switchScene(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(fxml)
-        );
-        Scene scene = new Scene(loader.load());
-        Stage stage = (Stage) EditID.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) editID.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load fxml " + fxml, e);
+        }
     }
 }

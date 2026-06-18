@@ -62,6 +62,10 @@ public class TaskManager {
         }
     }
 
+    public void removeTaskById(String id) {
+        tasks.removeIf(task -> task.getId().equals(id));
+    }
+
     // ── CRUD ──────────────────────────────────────────────────────
     public void addTask(Task task) {
         tasks.add(task);

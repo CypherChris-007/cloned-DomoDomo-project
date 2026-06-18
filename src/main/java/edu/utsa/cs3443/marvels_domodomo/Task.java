@@ -5,16 +5,20 @@
  * Stores the task name, point value, and completion status.
  */
 package edu.utsa.cs3443.marvels_domodomo;
+import java.util.UUID;//unique ID -> prevent name collision
+
 
 public class Task {
 
     // Variables
+    private final String id;
     private String taskName;
     private int points;
     private boolean taskIsCompleted;
 
     // Constructor
     public Task(String taskName, int points, boolean taskIsCompleted) {
+        this.id = UUID.randomUUID().toString(); // auto-generate on creation = creates a unique ID
         this.taskName = taskName;
         this.points = points;
         this.taskIsCompleted = taskIsCompleted;
@@ -41,6 +45,9 @@ public class Task {
     public void setTaskIsCompleted(boolean taskIsCompleted) {
         this.taskIsCompleted = taskIsCompleted;
     }
+
+    public String getId() {return id;}
+
 
     /**
      * Format foes like "taskName,points,true/false"

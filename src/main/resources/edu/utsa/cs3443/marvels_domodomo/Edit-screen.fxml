@@ -45,7 +45,7 @@
                         <Image url="@../../../../images/BGDomo/EditSCreen.PNG" />
                     </image>
                 </ImageView>
-                <Button fx:id="editID" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="148.0" layoutY="91.0" mnemonicParsing="false" onAction="#onEditClick2" prefHeight="113.0" prefWidth="294.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
+                <Button fx:id="editID" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="148.0" layoutY="91.0" mnemonicParsing="false" onAction="#onEditSaveToggle" prefHeight="113.0" prefWidth="294.0" styleClass="pixel-button" stylesheets="@../../../../style.css" text="Edit" textAlignment="CENTER">
                     <font>
                         <Font name="Oswald Medium" size="31.0" />
                     </font>
