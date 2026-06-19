@@ -148,8 +148,8 @@ public class PetController {
 
     private void switchScene(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        Scene scene = new Scene(loader.load());
         Stage stage = (Stage) petButton.getScene().getWindow();
+        Scene scene = SceneUtils.createScaledScene(loader.load(), stage); // ← changed
         stage.setScene(scene);
         stage.show();
     }

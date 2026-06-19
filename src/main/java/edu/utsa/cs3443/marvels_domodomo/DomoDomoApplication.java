@@ -9,13 +9,13 @@ import java.io.IOException;
 public class DomoDomoApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(
-                DomoDomoApplication.class.getResource("Main-screen.fxml")
-        );
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        FXMLLoader fxmlLoader = new FXMLLoader(DomoDomoApplication.class.getResource("Main-screen.fxml"));
+
+        Scene scene = SceneUtils.createScaledScene(fxmlLoader.load(), stage);
         stage.setTitle("DomoDomo!");
         stage.setScene(scene);
-       // stage.setMaximized(true);   // ← fills any laptop screen (hopefully)
+        stage.setResizable(true);
+        stage.setMaximized(false);
         stage.show();
     }
 

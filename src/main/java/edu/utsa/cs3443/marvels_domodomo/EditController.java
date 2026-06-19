@@ -235,7 +235,7 @@ public class EditController {
         removeID.setStyle("");
         removeID.setText("Remove");
 
-        if (!taskName.isEmpty() && !taskName.equals("Type Here . . .")) {
+        if (!taskName.isEmpty() && !taskName.equals(PLACEHOLDER)) {
             TaskManager.getInstance().removeTaskByName(taskName);
             saveToFile();
             loadFromFile();

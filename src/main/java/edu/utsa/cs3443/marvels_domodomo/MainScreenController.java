@@ -51,10 +51,6 @@ public class MainScreenController {
     // Added for sprite change
     @FXML private ImageView spriteImage; // ← new
 
-
-
-
-
     private Image emptyHeart;
     // At the top of your class
     private Image fullHeart;
@@ -223,8 +219,9 @@ public class MainScreenController {
 
     private void switchScene(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        Scene scene = new Scene(loader.load());
+        javafx.scene.Parent root = loader.load();
         Stage stage = (Stage) editButton.getScene().getWindow();
+        Scene scene = SceneUtils.createScaledScene(root, stage); // ← changed
         stage.setScene(scene);
         stage.show();
 
